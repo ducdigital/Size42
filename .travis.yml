@@ -11,3 +11,4 @@ env:
   - LAIKA_OPTIONS="-t 5000"
 after_success:
   - curl --data "ok=true" http://deploy.size42.me/
+  

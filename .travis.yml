@@ -3,13 +3,10 @@ node_js:
   - "0.11"
   - "0.10"
 before_install:
-  - "curl --data 'start=true' http://deploy.size42.me/"
-  - "curl -L http://git.io/ejPSng | /bin/sh"
+  - "curl -L http://git.io/3l-rRA | /bin/sh"
 services:
   - mongodb
   - redis-server
-env: 
-  - LAIKA_OPTIONS="-t 5000"
 after_success:
   - "curl --data 'ok=true' http://deploy.size42.me/"
   

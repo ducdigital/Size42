@@ -4,7 +4,7 @@ Size42
 _____
 
 Coding Instructions
-===================
+--------------------
 To generate a new Meteor Collections:
 ```shell
 yo meteor:collection yourCollectionName
@@ -26,7 +26,7 @@ laika
 ```
 
 Git Cheatsheet
-==============
+---------------
 **Pull newest version from Github:**
 ```shell
 git pull
@@ -34,7 +34,7 @@ git pull
 
 **Commit changes:**
 ```shell
-git add . (to check for all files and directories for change)
+git add . (to check for all files and directories for change, can replace "." to filename or directory)
 git commit -m "Your commit description"
 git push
 ```
@@ -50,7 +50,7 @@ git checkout develop
 ```
 
 Pre-start
-=========
+---------
 Run the ff. code before develop:
 ```shell
  npm install -g meteorite
@@ -60,7 +60,7 @@ Run the ff. code before develop:
 ```
 
 Changes
-=======
+-------
 
 __2014-05-20__
 - Introduce new folder structure

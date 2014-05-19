@@ -2,7 +2,6 @@
   "packages": {
     "iron-router": {},
     "bootstrap3-less": {},
-    "collection-api": {},
-    "accounts-ui": {}
+    "collection-api": {}
   }
 }

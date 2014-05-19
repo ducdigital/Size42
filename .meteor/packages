@@ -4,3 +4,6 @@ less
 bootstrap3-less
 collection-api
 accounts-ui
+accounts-twitter
+accounts-facebook
+accounts-google

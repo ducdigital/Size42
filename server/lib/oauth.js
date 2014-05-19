@@ -1,65 +1,72 @@
-/*
-Accounts.loginServiceConfiguration.remove({
+isProdEnv = function () {
+    return false;
+}
+
+ServiceConfiguration.configurations.remove({
     service: 'google'
 });
- 
-Accounts.loginServiceConfiguration.remove({
+/* 
+ServiceConfiguration.configurations.remove({
     service: 'facebook'
 });
  
-Accounts.loginServiceConfiguration.remove({
+ServiceConfiguration.configurations.remove({
     service: 'twitter'
 });
  
-Accounts.loginServiceConfiguration.remove({
+ServiceConfiguration.configurations.remove({
     service: 'github'
 });
- 
+ */
 if (isProdEnv()) {
-    Accounts.loginServiceConfiguration.insert({
+  /*
+    ServiceConfiguration.configurations.insert({
         service: 'github',
         clientId: '00000',
         secret: '00000'
     });
-    Accounts.loginServiceConfiguration.insert({
+    ServiceConfiguration.configurations.insert({
         service: 'twitter',
         consumerKey: '00000',
         secret: '00000'
     });
-    Accounts.loginServiceConfiguration.insert({
+    ServiceConfiguration.configurations.insert({
         service: 'google',
         appId: '00000',
         secret: '00000'
     });
-    Accounts.loginServiceConfiguration.insert({
+    ServiceConfiguration.configurations.insert({
         service: 'facebook',
         appId: '00000',
         secret: '00000'
     });
+  */
 } else {
+    ServiceConfiguration.configurations.insert({
+        service: 'google',
+        clientId: '99597858936-8e5nrepfse8ijevnm08te0dm5iatflbc.apps.googleusercontent.com',
+        secret: '0MVhynxJH5zRMrssWS9c0msg'
+    });
+  /*
     // dev environment
-    Accounts.loginServiceConfiguration.insert({
+    ServiceConfiguration.configurations.insert({
         service: 'github',
         clientId: '11111',
         secret: '11111'
     });
-    Accounts.loginServiceConfiguration.insert({
+    ServiceConfiguration.configurations.insert({
         service: 'twitter',
         consumerKey: '11111',
         secret: '11111'
     });
-    Accounts.loginServiceConfiguration.insert({
-        service: 'google',
-        clientId: '11111',
-        secret: '11111'
-    });
-    Accounts.loginServiceConfiguration.insert({
+    ServiceConfiguration.configurations.insert({
         service: 'facebook',
         appId: '11111',
         secret: '11111'
     });
+  */
 }
- */
+ 
 Accounts.onCreateUser(function (options, user) {
     if (user.services) {
         if (options.profile) {
@@ -110,9 +117,11 @@ Accounts.onCreateUser(function (options, user) {
  
         // copy accross new service info
         existingUser.services[service] = user.services[service];
-        existingUser.services.resume.loginTokens.push(
-            user.services.resume.loginTokens[0]
-        );
+        if(typeof user.services.resume != "undefined"){
+          existingUser.services.resume.loginTokens.push(
+              user.services.resume.loginTokens[0]
+          );
+        }
  
         // even worse hackery
         Meteor.users.remove({_id: existingUser._id}); // remove existing record

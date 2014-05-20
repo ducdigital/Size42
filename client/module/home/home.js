@@ -1,8 +1,7 @@
 Template.home.helpers({
   products: function() {
     return "";
-  },
-  hello: function(){ return "hello"; }
+  }
 });
 
 Template.home.events({

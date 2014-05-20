@@ -7,12 +7,13 @@ Coding Instructions
 --------------------
 To generate a new Meteor Collections:
 ```shell
-yo meteor:collection yourCollectionName
+create a file in /server/publications
+create a file in /collections
 ```
 
 To generate a new Meteor View:
 ```shell
-yo meteor:view viewName to generate a view
+duplicate the folder product in /client/module
 ```
 
 To install project dependencies:

@@ -1,0 +1,12 @@
+<template name="home">
+  <div class="container">
+    <div class="jumbotron">
+      {{> loginButtons}}
+      <button class="btn btn-default" type="button" id="add_product">Add product</button>
+      <input type="text" id="product_name" />
+      {{#each items}}
+        {{> product}}
+      {{/each}}
+    </div>
+  </div>
+</template>

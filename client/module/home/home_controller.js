@@ -2,12 +2,12 @@ HomeController = RouteController.extend({
   template: 'home',
   
   waitOn: function() {
-    return Meteor.subscribe('products');
+    return Meteor.subscribe('product-latest-10');
   },
 
 
   data: function () {
-    data = { items: Meteor.Call("listProduct") };
+    data = { items: Products.find({},{sort:{'submittedOn':-1}}) };
     return data;
   },
 

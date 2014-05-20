@@ -1,1 +1,2 @@
-Meteor.subscribe('products');
+// Global Subcriptions of Products 
+//Meteor.subscribe('products');

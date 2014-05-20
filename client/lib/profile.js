@@ -1,1 +1,1 @@
-Meteor.subscribe('profile');
+// Global Subcriptions of Profile 

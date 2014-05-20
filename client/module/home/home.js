@@ -16,7 +16,3 @@ Template.product.events({
      Meteor.call("deleteProduct", this._id);
   }
 });
-
-Template.home.items = function(){
-  return Products.find({},{sort:{'submittedOn':-1}});
-}

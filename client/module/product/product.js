@@ -4,3 +4,4 @@ Template.product.events({
      Router.go('home');
   }
 });
+

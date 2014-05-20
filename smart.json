@@ -3,9 +3,10 @@
     "iron-router": {},
     "bootstrap3-less": {},
     "collection-api": {},
-    "Mesosphere":{
-      "git":"https://github.com/copleykj/Mesosphere.git",
-      "branch":"beta"
-    }
+    "Mesosphere": {
+      "git": "https://github.com/copleykj/Mesosphere.git",
+      "branch": "beta"
+    },
+    "fast-render": {}
   }
 }

@@ -8,7 +8,8 @@
       "Mesosphere": {
         "git": "https://github.com/copleykj/Mesosphere.git",
         "branch": "beta"
-      }
+      },
+      "fast-render": {}
     },
     "packages": {
       "iron-router": {
@@ -30,6 +31,11 @@
         "git": "https://github.com/copleykj/Mesosphere.git",
         "branch": "beta",
         "commit": "dc63582fa5d3a4dc3952a80bead9625ef4ab259b"
+      },
+      "fast-render": {
+        "git": "https://github.com/arunoda/meteor-fast-render.git",
+        "tag": "v0.2.5",
+        "commit": "93e2fb334e55fbe9b5ebb2a2e65964018658f43e"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

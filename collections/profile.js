@@ -62,19 +62,17 @@ Meteor.methods({
     return null;
   },
   /*
-    updateProfile() Function not working
+    updateProfile() Function is working
   */
-  updateProfie: function(profile_id, profile_weight, profile_length, profile_corpulence){
+  updateProfile: function(profile_id, profile_weight, profile_length, profile_corpulence){
     update_date = {
-      'measurements':{
-        'basic':
+      'measurements.basic':
         {
           weigth: profile_weight,
           length: profile_length,
           corpulence: profile_corpulence
         }
-      }
-    };
+      };
     Profile.update(
       {_id: profile_id, 'submittedBy': Meteor.userId()},
       { $set: update_date }
@@ -85,7 +83,7 @@ Meteor.methods({
   
   /*
     addOwnedClothtoProfile() is working. Don't change.
-    Info:- This is to add new clothes to the user profile.
+    Info:- This is to add new clothes to the user 
   */
   addOwnedClothtoProfile: function(profile_id, u_brand, u_country, u_type, u_size){
     var update_date = {
@@ -100,7 +98,10 @@ Meteor.methods({
     Profile.update({_id: profile_id, 'submittedBy': Meteor.userId()}, {$push: update_date});
     return null;
   },
-  
+   /*
+    addOwnedClothtoProfile() is working. Don't change.
+    Info:- This is to add new clothes to the user 
+  */
   updateOwnedCloth: function(profile_id, cloth_id, u_brand, u_country, u_type, u_size){
     var dbmeasure = Profile.findOne({_id: profile_id}).measurements.owned_clothes;
     var filter = _.filter(dbmeasure, function(obj){ 
@@ -141,7 +142,7 @@ Meteor.methods({
     // 1st step . Query from DB the profile
     // 2nd step . Join obj with measurement and remove old value from measurement. and put it into an obj
     // 3rd step. Update. { $set: {measurement: newobj} }
-    var dbmeasure = Profile.find({_id: profile_id}).measurements;
+    var dbmeasure = Profile.findOne({_id: profile_id}).measurements;
     for(var key in dbmeasure){
       for(var ky in obj){
         if(obj.hasOwnProperty(ky) && dbmeasure.hasOwnProperty(key)){
@@ -159,7 +160,7 @@ Meteor.methods({
     return null;
   },
   
-  removeMeasurements: function(){
+  removeMeasurements: function(name){
     return null;
   }
  

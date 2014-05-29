@@ -1,4 +1,4 @@
-var inspect = require('util').inspect;
+/*var inspect = require('util').inspect;
 var _ = require('underscore');
 /*
  var output = { 
@@ -170,5 +170,3 @@ var average_cal = function(obj){
 // **********************************************************************
 // END of AVERAGE of OWNED CLOTH. FUNCTION TESTED AND DONE. DO NOT CHANGE
 // **********************************************************************
-
-console.log(average_cal(main));

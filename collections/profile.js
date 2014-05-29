@@ -1,4 +1,4 @@
-Profile = new Meteor.Collection('profile');
+Profile = new Meteor.Collection('profiles');
 /*  Measurement Object
           'body_length':0,
           'sleeves_length':0,
@@ -55,11 +55,6 @@ Meteor.methods({
   */
   deleteProfile: function(profile_id){
     return Profile.remove({_id: profile_id, 'submittedBy': Meteor.userId()});
-  },
-
-  linkProfiletoUser: function(){
-    // Link a profile to user account. 
-    return null;
   },
   /*
     updateProfile() Function is working

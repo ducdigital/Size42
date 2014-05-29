@@ -20,5 +20,43 @@ Meteor.methods({
   deleteProduct: function(id){
     console.log("Delete product id: "+id);
     return Products.remove(id);
+  },
+  /*
+    The below function is to link product to the profile in Profile collection.
+    Not from the user  collection.--Niraj
+  */
+  linkProductToProfile: function(profile_id,product_id){
+    var profile = Meteor.profile.findOne({_id: profile_id});
+    var filter;
+     if(profile.measurements !== 'undefined'){
+      filter = _.filter(profile.measurements, function(obj){ 
+        return (obj != profile_id);
+      });
+    }
+    filter.push(product_id);
+   Meteor.Profile.update(
+      {_id: profile_id},
+      { $set: { 'measurements': filter } }
+    );   
+  return null;
+  
+  },
+  /*
+    The below function is to link product to the profile in Profile collection.
+    Not from the user  collection.--Niraj
+  */
+  unlinkProductToProfile: function(profile_id,product_id){
+    var profile = Meteor.Profile.findOne({_id:profile_id});
+    
+    var filter = _.filter(profile.measurements, function(obj){
+      return(obj !== product_id)
+    });
+    Meteor.Profile.update(
+      {_id: profile_id},
+      { $set: { 'measurements': filter } }
+    );
+    return null;
   }
+  
+  
 });

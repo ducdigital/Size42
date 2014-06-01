@@ -80,14 +80,14 @@ Meteor.methods({
     addOwnedClothtoProfile() is working. Don't change.
     Info:- This is to add new clothes to the user 
   */
-  addOwnedClothtoProfile: function(profile_id, u_brand, u_country, u_type, u_size){
+  addOwnedClothtoProfile: function(profile_id, userBrand, userCountry, userType, userSize){
     var update_date = {
       'measurements.owned_clothes': {
           _id: new Meteor.Collection.ObjectID()._str,
-          brand: u_brand,
-          country: u_country,
-          type: u_type,
-          size: u_size
+          brand: userBrand,
+          country: userCountry,
+          type: userType,
+          size: userSize
         }
     };
     Profile.update({_id: profile_id, 'submittedBy': Meteor.userId()}, {$push: update_date});
@@ -95,9 +95,9 @@ Meteor.methods({
   },
    /*
     addOwnedClothtoProfile() is working. Don't change.
-    Info:- This is to add new clothes to the user 
+    Info:- This is to UPDATE new clothes to the user 
   */
-  updateOwnedCloth: function(profile_id, cloth_id, u_brand, u_country, u_type, u_size){
+  updateOwnedCloth: function(profile_id, cloth_id, userBrand, userCountry, userType, userSize){
     var dbmeasure = Profile.findOne({_id: profile_id}).measurements.owned_clothes;
     var filter = _.filter(dbmeasure, function(obj){ 
       return (obj._id != cloth_id);
@@ -105,10 +105,10 @@ Meteor.methods({
     filter.push( 
         {
           _id: cloth_id,
-          brand: u_brand,
-          country: u_country,
-          type: u_type,
-          size: u_size
+          brand: userBrand,
+          country: userCountry,
+          type: userType,
+          size: userSize
         } 
     );
     

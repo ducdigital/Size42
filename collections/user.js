@@ -18,6 +18,10 @@ if (Meteor.isServer) {
   });
 
   Meteor.methods({
+    
+    /*
+    The linkProfiletoUser() will return the Users profile with all his measurements
+    */    
     linkProfiletoUser: function(user_id, profile_id){
     var user = Meteor.users.findOne({_id: user_id});
 

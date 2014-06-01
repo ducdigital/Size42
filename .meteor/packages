@@ -10,3 +10,4 @@ accounts-google
 service-configuration
 insecure
 fast-render
+phonegap-oauth

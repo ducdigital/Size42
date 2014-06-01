@@ -23,7 +23,7 @@ Meteor.methods({
   },
   /*
     The below function is to link product to the profile in Profile collection.
-    Not from the user  collection.--Niraj
+    Not from the user  collection.
   */
   linkProductToProfile: function(profile_id,product_id){
     var profile = Meteor.profile.findOne({_id: profile_id});
@@ -43,7 +43,7 @@ Meteor.methods({
   },
   /*
     The below function is to link product to the profile in Profile collection.
-    Not from the user  collection.--Niraj
+    Not from the user  collection.
   */
   unlinkProductToProfile: function(profile_id,product_id){
     var profile = Meteor.Profile.findOne({_id:profile_id});

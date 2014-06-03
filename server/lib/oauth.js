@@ -66,7 +66,7 @@ if (isProdEnv()) {
     });
   */
 }
- 
+
 Accounts.onCreateUser(function (options, user) {
     if (user.services) {
         if (options.profile) {
@@ -128,3 +128,4 @@ Accounts.onCreateUser(function (options, user) {
         return existingUser;    		      // record is re-inserted
     }
 });
+

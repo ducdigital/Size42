@@ -9,8 +9,7 @@
         "git": "https://github.com/copleykj/Mesosphere.git",
         "branch": "beta"
       },
-      "fast-render": {},
-      "phonegap-oauth": {}
+      "fast-render": {}
     },
     "packages": {
       "iron-router": {
@@ -37,11 +36,6 @@
         "git": "https://github.com/arunoda/meteor-fast-render.git",
         "tag": "v0.2.5",
         "commit": "93e2fb334e55fbe9b5ebb2a2e65964018658f43e"
-      },
-      "phonegap-oauth": {
-        "git": "https://github.com/AdamBrodzinski/meteor-phonegap-oauth.git",
-        "tag": "v0.1.4",
-        "commit": "09de9417967381153218ad4393bd63981e22756c"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

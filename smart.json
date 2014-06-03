@@ -7,7 +7,6 @@
       "git": "https://github.com/copleykj/Mesosphere.git",
       "branch": "beta"
     },
-    "fast-render": {},
-    "phonegap-oauth": {}
+    "fast-render": {}
   }
 }

@@ -26,7 +26,7 @@ Meteor.methods({
     Not from the user  collection.
   */
   linkProductToProfile: function(profile_id,product_id){
-    var profile = Meteor.profile.findOne({_id: profile_id});
+    var profile = Meteor.Profile.findOne({_id: profile_id});
     var filter;
      if(profile.measurements !== 'undefined'){
       filter = _.filter(profile.measurements, function(obj){ 

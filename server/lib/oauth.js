@@ -5,11 +5,11 @@ isProdEnv = function () {
 ServiceConfiguration.configurations.remove({
     service: 'google'
 });
-/* 
+
 ServiceConfiguration.configurations.remove({
     service: 'facebook'
 });
- 
+ /* 
 ServiceConfiguration.configurations.remove({
     service: 'twitter'
 });
@@ -47,7 +47,7 @@ if (isProdEnv()) {
         clientId: '99597858936-8e5nrepfse8ijevnm08te0dm5iatflbc.apps.googleusercontent.com',
         secret: '0MVhynxJH5zRMrssWS9c0msg'
     });
-  /*
+    /*
     // dev environment
     ServiceConfiguration.configurations.insert({
         service: 'github',
@@ -59,12 +59,12 @@ if (isProdEnv()) {
         consumerKey: '11111',
         secret: '11111'
     });
+    */
     ServiceConfiguration.configurations.insert({
         service: 'facebook',
-        appId: '11111',
-        secret: '11111'
+        appId: '272333686272028',
+        secret: '0f73aa0195e02f20694025488e249fe7'
     });
-  */
 }
 
 Accounts.onCreateUser(function (options, user) {
@@ -128,4 +128,3 @@ Accounts.onCreateUser(function (options, user) {
         return existingUser;    		      // record is re-inserted
     }
 });
-

@@ -69,11 +69,14 @@ if (isProdEnv()) {
 
 Accounts.onCreateUser(function (options, user) {
     if (user.services) {
-        if (options.profile) {
-            user.profile = options.profile
-        }
         var service = _.keys(user.services)[0];
         var email = user.services[service].email;
+
+        if (options.profile) {
+            if(service == "facebook")
+                options.profile.picture = "http://graph.facebook.com/" + user.services.facebook.id + "/picture/?type=large";
+            user.profile = options.profile
+        }
         if (!email) {
             if (user.emails) {
                 email = user.emails.address;

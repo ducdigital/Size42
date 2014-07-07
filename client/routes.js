@@ -1,11 +1,17 @@
 Router.configure({
-  layoutTemplate: 'layout'
+  layoutTemplate: 'layout',
+  fastRender: true
 });
+
+Router.onBeforeAction('loading');
 
 Router.map(function() {
   this.route('home', {
     path: '/',
-    template: 'home'
+    controller: 'HomeController'
+  });
+  this.route('product', {
+    path: '/p/:_id',
+    controller: 'ProductController'
   });
 });
-

@@ -4,7 +4,13 @@
     "basePackages": {
       "iron-router": {},
       "bootstrap3-less": {},
-      "collection-api": {}
+      "collection-api": {},
+      "Mesosphere": {
+        "git": "https://github.com/copleykj/Mesosphere.git",
+        "branch": "beta"
+      },
+      "fast-render": {},
+      "mondora-asteroid": {}
     },
     "packages": {
       "iron-router": {
@@ -22,10 +28,30 @@
         "tag": "v0.1.15",
         "commit": "b62c51f387287726cf3b64077f7bc69604ec2f5e"
       },
+      "Mesosphere": {
+        "git": "https://github.com/copleykj/Mesosphere.git",
+        "branch": "beta",
+        "commit": "dc63582fa5d3a4dc3952a80bead9625ef4ab259b"
+      },
+      "fast-render": {
+        "git": "https://github.com/arunoda/meteor-fast-render.git",
+        "tag": "v0.2.8",
+        "commit": "149984b1aff3a5642a270aff9bd9006872c8302e"
+      },
+      "mondora-asteroid": {
+        "git": "https://github.com/mondora/meteor-asteroid.git",
+        "tag": "v0.1.3",
+        "commit": "204fe4c382f1bc0d56cadcdf145483bcb39fee24"
+      },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
         "tag": "v0.2.4",
         "commit": "b40e9b0612329288d75cf52ad14a7da64bb8618f"
+      },
+      "underscore-string-latest": {
+        "git": "https://github.com/TimHeckel/meteor-underscore-string.git",
+        "tag": "v2.3.3",
+        "commit": "4a5d70eee48fbd90a6e6fc78747250d704a0b3bb"
       }
     }
   }

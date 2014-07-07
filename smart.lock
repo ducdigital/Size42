@@ -40,8 +40,8 @@
       },
       "mondora-asteroid": {
         "git": "https://github.com/mondora/meteor-asteroid.git",
-        "tag": "v0.1.3",
-        "commit": "204fe4c382f1bc0d56cadcdf145483bcb39fee24"
+        "tag": "v0.1.5",
+        "commit": "79204ad5114395fccaf12c451c87219fae03b4f8"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

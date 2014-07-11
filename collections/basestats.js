@@ -31,7 +31,7 @@ if(Meteor.isServer){
 		*/
 		createAllBaseStats: function(){
 			var chunk = 20;
-			var output = Assets.getText("BasicMeasures1.csv", function (err, result) {
+			var output = Assets.getText("BasicMeasures.csv", function (err, result) {
 				if(err){ console.log("Err:" + err); }
 	 			//console.log("result inside: " + result);
 	 			var array = result.replace( /\n/g, "," ).split(',');
@@ -77,16 +77,15 @@ Meteor.methods({
 		/* 
 	*  Find base stat by 4 values (gender, weight, length, corpulence)
 	*/ 
-	findBaseStat: function(gender, weight, length, corpulence){
+	findBaseStat: function(gender, weight, length, corpulance){
 		var doc = {
 				"gender": gender,
 				"weight": weight,
 				"height": length,
-				"corpulance": corpulence
+				"corpulance": corpulance
 		};
-		console.log("Finding item");
 		var myDocument = BaseStats.findOne(doc);
-		console.log(myDocument);
-		return null;
+		console.log("Logging my document : " + JSON.stringify(myDocument));
+		return myDocument;
 	}
 }); 	

@@ -24,16 +24,17 @@ Meteor.methods({
     The newProfile() is working. Don't change in this.
     Info: To add new user profile.
   */
-  newProfile: function(u_weight, u_length, u_corpulence) {
+  newProfile: function(name, u_weight, u_length, u_corpulence) {
     
     Profile.insert({
+      'name': name,
       'submittedOn': new Date(),
       'submittedBy': Meteor.userId(),
       'measurements':{
         'basic':{
-          'weigth': u_weight,
-          'length': u_length,
-          'corpulence': u_corpulence
+          'weight': Number(u_weight),
+          'length': Number(u_length),
+          'corpulence': Number(u_corpulence)
         },
         'owned_clothes':[],
         'manual_measured':{
@@ -63,7 +64,7 @@ Meteor.methods({
     update_date = {
       'measurements.basic':
         {
-          weigth: profile_weight,
+          weight: profile_weight,
           length: profile_length,
           corpulence: profile_corpulence
         }

@@ -8,6 +8,9 @@
       "branch": "beta"
     },
     "fast-render": {},
-    "mondora-asteroid": {}
+    "mondora-asteroid": {},
+    "meteor-phonegap-push": {
+      "git": "https://github.com/SpaceCapsule/Meteor-phonegap-push.git"
+    }
   }
 }

@@ -10,7 +10,11 @@
         "branch": "beta"
       },
       "fast-render": {},
-      "mondora-asteroid": {}
+      "mondora-asteroid": {},
+      "meteor-phonegap-push": {
+        "git": "https://github.com/SpaceCapsule/Meteor-phonegap-push.git",
+        "branch": "master"
+      }
     },
     "packages": {
       "iron-router": {
@@ -42,6 +46,11 @@
         "git": "https://github.com/mondora/meteor-asteroid.git",
         "tag": "v0.1.5",
         "commit": "79204ad5114395fccaf12c451c87219fae03b4f8"
+      },
+      "meteor-phonegap-push": {
+        "git": "https://github.com/SpaceCapsule/Meteor-phonegap-push.git",
+        "branch": "master",
+        "commit": "1f6b1f87ff8a6065840c92c47e008d72b6f75455"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

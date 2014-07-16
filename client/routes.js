@@ -7,7 +7,8 @@ Router.onBeforeAction('loading');
 
 Router.map(function() {
   this.route('home', {
-    path: '/',
+    path: '/',  
+    layoutTemplate: 'layoutHome',
     controller: 'HomeController'
   });
   this.route('product', {

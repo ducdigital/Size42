@@ -230,9 +230,10 @@ if(Meteor.isServer){
       return base_stat.values;
     },
 
-    calculateSize: function(profile_id){
+    calculateSize: function(profile_id, brand, type, gender){
       var measurements = Meteor.call("calculateMeasurements", profile_id);
-      console.log(measurements);
+      var brandCharts = BrandCharts.find({"name": brand, "type": type, "gender": gender}).fetch();
+      console.log();
     }
    
   });

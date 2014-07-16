@@ -148,38 +148,21 @@ if(Meteor.isServer){
 			});
 		} // End of CreateAllBrandCharts()
 	}); // End of Meteor Methods
+	Meteor.methods({
+		/* 
+		*  Find Brand Chart by the brand name, gender type, type of the item, and an array of measurements
+		*  @param brand, gender, type, measurements
+		*/ 
+		findBrandSize: function(brand, gender, type, size, country){
+			var doc = {	'name' : brand, 
+						'gender' : gender,
+						'type' : type,
+						'region_size' : { $all : [
+											{ $elemMatch : { "country" : country , "size" : size } }
+										]}
+						};
+			BrandCharts.find(doc);
+			return BrandCharts.findOne(doc);
+		}
+	});
 } // End of If meteor Server
-
-Meteor.methods({
-	/* 
-	*  Find Brand Chart by the brand name, gender type, type of the item, and an array of measurements
-	*  @param brand, gender, type, measurements
-	*/ 
-	findBrandSize: function(brand, gender, type, size, country){
-		console.log("<=====================START FINDING BRAND ===========================>");
-		console.log("Brand: " + brand);
-		console.log("Gender: " + gender);
-		console.log("Brand: " + type);
-		console.log("Brand: " + size);
-		console.log("Brand: " + country);
-		var doc = {	'name' : "Puma", 
-					'gender' : "Female",
-					'type' : "Shirt",
-					'region_size' : { $all : [
-										{ $elemMatch : { "country" : "France" , "size" : 34 } }
-									]}
-					};
-		BrandCharts.find(doc);
-		console.log("The doc : " + JSON.stringify(doc));
-		console.log(BrandCharts.find(doc));
-		// var brand = BrandCharts.find({ 	"name" : "Puma", 
-		// 								"gender" : "Female",
-		// 					  			"type" : "Shirt",
-		// 							   "region_size" : { "$all" : [
-		// 													{ "$elemMatch" : { "country" : "France" , "size" : 34 } }
-		// 												]}
-		// 					 });
-		//console.log("Logging the FIND BRAND: " + JSON.stringify(brand));
-		return null;
-	}
-});

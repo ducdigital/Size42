@@ -14,7 +14,9 @@
       "meteor-phonegap-push": {
         "git": "https://github.com/SpaceCapsule/Meteor-phonegap-push.git",
         "branch": "master"
-      }
+      },
+      "crypto-md5": {},
+      "reactive-publish": {}
     },
     "packages": {
       "iron-router": {
@@ -52,6 +54,16 @@
         "branch": "master",
         "commit": "1f6b1f87ff8a6065840c92c47e008d72b6f75455"
       },
+      "crypto-md5": {
+        "git": "https://github.com/oortcloud/meteor-crypto-md5.git",
+        "tag": "v3.1.2.2",
+        "commit": "75bbb3eeace302122d3554a6212a6fe92553fa18"
+      },
+      "reactive-publish": {
+        "git": "https://github.com/Diggsey/meteor-reactive-publish.git",
+        "tag": "v0.1.6",
+        "commit": "dd8c149f109a1f3d1cac7e36293cf5904538ca90"
+      },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
         "tag": "v0.2.4",
@@ -61,6 +73,16 @@
         "git": "https://github.com/TimHeckel/meteor-underscore-string.git",
         "tag": "v2.3.3",
         "commit": "4a5d70eee48fbd90a6e6fc78747250d704a0b3bb"
+      },
+      "crypto-base": {
+        "git": "https://github.com/oortcloud/meteor-crypto-base.git",
+        "tag": "v3.1.2.1",
+        "commit": "5df8d82a0595553415bbfae2930c6ecbeece5794"
+      },
+      "server-deps": {
+        "git": "https://github.com/Diggsey/meteor-server-deps.git",
+        "tag": "v0.1.2",
+        "commit": "2db5d15fad9240723549cbbc5260a74b6b7e1c61"
       }
     }
   }

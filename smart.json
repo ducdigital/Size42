@@ -11,6 +11,8 @@
     "mondora-asteroid": {},
     "meteor-phonegap-push": {
       "git": "https://github.com/SpaceCapsule/Meteor-phonegap-push.git"
-    }
+    },
+    "crypto-md5": {},
+    "reactive-publish": {}
   }
 }

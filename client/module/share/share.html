@@ -1,0 +1,15 @@
+<template name="share">
+  <div class="share">
+    {{> loginButtons}}
+    <div class="result">
+    	{{#if isFailed }}
+    		<span>Share code is incorrect</span>
+		{{else}} {{#if isShare}}
+    		<span>You have been shared a profile. Go back to the app</span>
+    	{{else}}
+    		<span>You need to login to access the share profile</span>
+    	{{/if}}
+    	{{/if}}
+    </div>
+  </div>
+</template>

@@ -9,3 +9,8 @@
 /meteor
 /mondora-asteroid
 /meteor-phonegap-push
+/crypto-md5
+/crypto-base
+/publish-with-relations
+/reactive-publish
+/server-deps

@@ -24,7 +24,7 @@ Meteor.methods({
     The newProfile() is working. Don't change in this.
     Info: To add new user profile.
   */
-  newProfile: function(name, u_weight, u_length, u_corpulence) {
+  newProfile: function(name, u_weight, u_length, u_corpulence, gender) {
     
     Profile.insert({
       'name': name,
@@ -34,13 +34,17 @@ Meteor.methods({
         'basic':{
           'weight': Number(u_weight),
           'length': Number(u_length),
-          'corpulence': Number(u_corpulence)
+          'corpulence': Number(u_corpulence),
+          'gender': gender?'Male':'Female'
         },
         'owned_clothes':[],
         'manual_measured':{
         }
       }
+    }, function(err, profile_id){
+      Meteor.call("linkProfiletoUser", Meteor.userId(), profile_id);
     });
+    
     return null;
   },
   /*
@@ -55,19 +59,18 @@ Meteor.methods({
     Info:- To delete the exisisting user profile
   */
   deleteProfile: function(profile_id){
+    Meteor.call("unlinkProfiletoUser", Meteor.userId(), profile_id);
     return Profile.remove({_id: profile_id, 'submittedBy': Meteor.userId()});
   },
   /*
     updateProfile() Function is working
   */
-  updateProfile: function(profile_id, profile_weight, profile_length, profile_corpulence){
+  updateProfile: function(profile_id, name, profile_weight, profile_length, profile_gender){
     update_date = {
-      'measurements.basic':
-        {
-          weight: profile_weight,
-          length: profile_length,
-          corpulence: profile_corpulence
-        }
+        'name': name,
+        'measurements.basic.weight':profile_weight,
+        'measurements.basic.length':profile_length,
+        'measurements.basic.gender':profile_gender?'Male':'Female'
       };
     Profile.update(
       {_id: profile_id, 'submittedBy': Meteor.userId()},
@@ -138,17 +141,10 @@ Meteor.methods({
     // 1st step . Query from DB the profile
     // 2nd step . Join obj with measurement and remove old value from measurement. and put it into an obj
     // 3rd step. Update. { $set: {measurement: newobj} }
-    var dbmeasure = Profile.findOne({_id: profile_id}).measurements;
-    for(var key in dbmeasure){
-      for(var ky in obj){
-        if(obj.hasOwnProperty(ky) && dbmeasure.hasOwnProperty(key)){
-          if(ky == key){
-            delete dbmeasure[key];
-          }
-        }
-      }
-    }
-    var output = dbmeasure.concat(obj);
+
+    var dbmeasure = Profile.findOne({_id: profile_id}).measurements.manual_measured;
+    var output = _.extend(_.omit(dbmeasure, _.keys(obj)), obj);
+
     Profile.update(
       {_id: profile_id, 'submittedBy': Meteor.userId()},
       { $set: {'measurements.manual_measured': output} }
@@ -156,8 +152,88 @@ Meteor.methods({
     return null;
   },
   
-  removeMeasurements: function(name){
+  removeMeasurements: function(profile_id, name){
+    var dbmeasure = Profile.findOne({_id: profile_id}).measurements.manual_measured;
+    var output = _.omit(dbmeasure, name);
+    Profile.update(
+      {_id: profile_id, 'submittedBy': Meteor.userId()},
+      { $set: {'measurements.manual_measured': output} }
+    );
     return null;
   }
- 
+
 });
+
+if(Meteor.isServer){
+  Meteor.methods({
+
+    calculateMeasurements: function(profile_id){
+      var profile = Profile.findOne({_id: profile_id});
+      var manual_measured = profile.measurements.manual_measured;
+      var owned_clothes_measurements = [];
+
+      var base_stat = Meteor.call("findBaseStat", 
+        profile.measurements.basic.gender, 
+        profile.measurements.basic.weight, 
+        profile.measurements.basic.length, 
+        profile.measurements.basic.corpulence
+      );
+
+      profile.measurements.owned_clothes.forEach(function(brandItem){
+        var oms = Meteor.call("findBrandSize", brandItem.brand, profile.measurements.basic.gender, brandItem.type, brandItem.size, brandItem.country);
+        owned_clothes_measurements.push(oms.measurements);
+      });
+
+      var average_cal = function(owned){
+        var known_key = [];
+        var final_cal = {};
+        
+        //Find all known keys
+        for(var i = 0; i<owned.length; i++){
+          known_key.push(_.keys(owned[i])); 
+        }
+        var known_key_final =  _.chain(known_key).flatten().uniq().value();
+        
+        //Each object
+        _.each(owned, function(v){
+          for(var s =0; s<known_key_final.length; s++){ 
+            if(v[known_key_final[s]] !== undefined){
+              if(final_cal[known_key_final[s]] === undefined){
+                final_cal[known_key_final[s]] = v[known_key_final[s]];
+                final_cal[known_key_final[s]+"_count"] = 1;
+              }
+              else{
+                final_cal[known_key_final[s]] = 
+                  (
+                    (final_cal[known_key_final[s]]*final_cal[known_key_final[s]+"_count"])+
+                    v[known_key_final[s]]
+                  )/
+                (final_cal[known_key_final[s]+"_count"]+1);
+                final_cal[known_key_final[s]+"_count"]+=1;
+              }
+            }
+          }
+        });
+        
+        //final cleanup
+        for (var key in final_cal ) {
+          if(key.indexOf("_count") != -1 || key == "length" || isNaN(final_cal[key])){
+            delete final_cal[key];
+          }
+        }
+        return final_cal;
+          
+      }
+      var owned_clothes_calculated = average_cal(owned_clothes_measurements);
+      _.extend(base_stat.values, owned_clothes_calculated);
+      _.extend(base_stat.values, manual_measured);
+      return base_stat.values;
+    },
+
+    calculateSize: function(profile_id){
+      var measurements = Meteor.call("calculateMeasurements", profile_id);
+      console.log(measurements);
+    }
+   
+  });
+}

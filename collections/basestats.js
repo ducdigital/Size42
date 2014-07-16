@@ -72,20 +72,19 @@ if(Meteor.isServer){
 			});
 		}
 	});
-}
-Meteor.methods({
+	Meteor.methods({
 		/* 
-	*  Find base stat by 4 values (gender, weight, length, corpulence)
-	*/ 
-	findBaseStat: function(gender, weight, length, corpulance){
-		var doc = {
-				"gender": gender,
-				"weight": weight,
-				"height": length,
-				"corpulance": corpulance
-		};
-		var myDocument = BaseStats.findOne(doc);
-		console.log("Logging my document : " + JSON.stringify(myDocument));
-		return myDocument;
-	}
-}); 	
+		*  Find base stat by 4 values (gender, weight, length, corpulence)
+		*/ 
+		findBaseStat: function(gender, weight, length, corpulance){
+			var doc = {
+					"gender": gender,
+					"weight": weight,
+					"height": length,
+					"corpulance": corpulance
+			};
+			var myDocument = BaseStats.findOne(doc);
+			return myDocument;
+		}
+	}); 
+}	

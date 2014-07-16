@@ -28,6 +28,7 @@ Meteor.methods({
 		Brands.insert({'name': "Vans"});
 		Brands.insert({'name': "Versace"});
 		Brands.insert({'name': "Wilson"});
-		Brands.insert({'name': "Zara"});
+		Brands.insert({'name': "Oakley"});
+		Brands.insert({'name': "Puma"});
 	}
 });

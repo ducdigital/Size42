@@ -14,4 +14,8 @@ Router.map(function() {
     path: '/p/:_id',
     controller: 'ProductController'
   });
+  this.route('shareverificatiom', {
+    path: '/share/:_id',
+    controller: 'ShareController'
+  });
 });

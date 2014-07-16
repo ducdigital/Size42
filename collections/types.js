@@ -23,7 +23,7 @@ Meteor.methods({
 		Types.insert({'name': "Pants", "_id": "pants"});
 		Types.insert({'name': "Polo", "_id": "polo"});
 		Types.insert({'name': "Scarf", "_id": "scarf"});
-		Types.insert({'name': "T-shirt", "_id": "shirt with short sleeves"});
+		Types.insert({'name': "Shirt", "_id": "shirt with short sleeves"});
 		Types.insert({'name': "High heel", "_id": "shoe_f"});
 		Types.insert({'name': "Shoes", "_id": "shoe_h"});
 		Types.insert({'name': "Short", "_id": "short"});
@@ -36,7 +36,7 @@ Meteor.methods({
 		Types.insert({'name': "Tank-top", "_id": "tanktop"});
 		Types.insert({'name': "Tie", "_id": "tie"});
 		Types.insert({'name': "Top", "_id": "top_f"});
-		Types.insert({'name': "T-Shirt", "_id": "tshirt"});
+		Types.insert({'name': "Shirt", "_id": "tshirt"});
 		Types.insert({'name': "Watches", "_id": "watch"});
 	}
 });

@@ -125,9 +125,8 @@ var main = {
 // ***************************************************************
 // AVERAGE of OWNED CLOTH. FUNCTION TESTED AND DONE. DO NOT CHANGE
 // ***************************************************************
-var average_cal = function(obj){
+var average_cal = function(owned){
   var known_key = [];
-  var owned = obj.measurements.owned_clothes;
   var final_cal = {};
   
   //Find all known keys

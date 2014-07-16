@@ -11,3 +11,5 @@ service-configuration
 insecure
 fast-render
 mondora-asteroid
+crypto-md5
+reactive-publish

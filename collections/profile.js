@@ -231,10 +231,31 @@ if(Meteor.isServer){
     },
 
     calculateSize: function(profile_id, brand, type, gender){
-      var measurements = Meteor.call("calculateMeasurements", profile_id);
+      var output = [];
+      var range = 4;
+      var tryCount = 0;
+      var maxTryCount = 15;
+      var measurements = Meteor.call("calculateMeasurements", profile_id); 
       var brandCharts = BrandCharts.find({"name": brand, "type": type, "gender": gender}).fetch();
-      console.log();
+      var merged = {};
+      _.pluck(brandCharts, 'measurements').forEach(function(item){
+        _.extend(merged, item);
+      });
+      var keys = _.keys(merged);
+      while(output.length < 1 && tryCount < maxTryCount){
+        var output = _.filter(brandCharts, function(brandsize){ 
+          var outresult = true;
+          keys.forEach(function(key){
+            if(brandsize.measurements[key] < measurements[key]-range || brandsize.measurements[key] > measurements[key]+range ){
+              outresult = false;
+            }
+          });
+          return outresult; 
+        });
+        range++;
+        tryCount++;
+      }
+      return output;
     }
-   
   });
 }
